@@ -3,6 +3,7 @@ package es.empresa.torneo.control;
 import java.util.ArrayList;
 import java.util.List;
 import es.empresa.torneo.modelo.Equipo;
+import es.empresa.torneo.modelo.Jugador;
 import es.empresa.torneo.modelo.Partida;
 import es.empresa.torneo.modelo.Torneo;
 
@@ -13,6 +14,9 @@ import es.empresa.torneo.modelo.Torneo;
  * entre los equipos participantes. Implementa el patrón Singleton para garantizar una única instancia de 
  * gestión de torneos.
  * 
+ * Esta clase maneja principalmente tres listas, una lista de torneos, una lista de equipos general
+ * (para todos los torneos) y una lista de jugadores (para todos los equipos y todos los torneos).
+ * 
  * @author cciglesiasmartinez
  */
 
@@ -20,6 +24,8 @@ public class GestionTorneos {
 
 	private static GestionTorneos instancia;
 	private List<Torneo> torneos;
+	private List<Equipo> equipos;
+	private List<Jugador> jugadores;
 	
 	/**
 	 * Constructor privado para implementar el patrón Singleton
@@ -27,6 +33,8 @@ public class GestionTorneos {
 	private GestionTorneos() {
 		super();
 		this.torneos = new ArrayList<Torneo>();
+		this.equipos = new ArrayList<Equipo>();
+		this.jugadores = new ArrayList<Jugador>();
 	}
 	
     /**
@@ -59,6 +67,81 @@ public class GestionTorneos {
 		this.torneos = torneos;
 	}
 
+	/**
+	 * Obtiene la lista de equipos registrados en el torneo.
+	 * 
+	 * @return lista de equipos.
+	 */
+	public List<Equipo> getEquipos() {
+	    return equipos;
+	}
+
+	/**
+	 * Establece la lista de equipos participantes en el torneo.
+	 * 
+	 * @param equipos lista de equipos a asignar.
+	 */
+	public void setEquipos(List<Equipo> equipos) {
+	    this.equipos = equipos;
+	}
+
+	/**
+	 * Obtiene la lista de jugadores inscritos en el torneo.
+	 * 
+	 * @return lista de jugadores.
+	 */
+	public List<Jugador> getJugadores() {
+	    return jugadores;
+	}
+
+	/**
+	 * Establece la lista de jugadores participantes en el torneo.
+	 * 
+	 * @param jugadores lista de jugadores a asignar.
+	 */
+	public void setJugadores(List<Jugador> jugadores) {
+	    this.jugadores = jugadores;
+	}
+	
+	/**
+	 * Agrega un jugador si este no está registrado previamente en la lista interna del controlador
+	 * 
+	 * @param jugador el jugador que será añadido
+	 * @return {@code true} si ha podido ser añadido, {@code false} si el jugador ya está inscrito
+	 */
+	public boolean agregaJugador(Jugador jugador) {
+		if (this.jugadores.contains(jugador)) return false;
+		return this.jugadores.add(jugador);
+	}
+	
+	/**
+	 * Agrega un jugador a un equipo si este no está inscrito ya
+	 * 
+	 * @param jugador el jugador al que queremos añadir
+	 * @param equipo el equipo donde queremos añadir a este jugador
+	 * @return {@code true} si el jugador ha podido ser inscrito, {@code false} 
+	 */
+	public boolean agregaJugadorAEquipo(Jugador jugador, Equipo equipo) {
+		for (Equipo e : equipos) {
+			if (e.getNombre().equals(equipo.getNombre()) && !e.getJugadores().contains(jugador) ) {
+				e.getJugadores().add(jugador);
+				jugadores.add(jugador);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Agrega un equipo a la lista general
+	 * 
+	 * @param equipo el equipo que vamos a agregar
+	 * @return {@code true} si el equipo se ha añadido, {@code false} si ya existía dicho equipo
+	 */
+	public boolean agregarEquipo(Equipo equipo) {
+		if(this.equipos.contains(equipo)) return false; 
+		return this.equipos.add(equipo);
+	}
 
     /**
      * Crea un nuevo torneo si no existe previamente.
