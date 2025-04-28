@@ -8,14 +8,12 @@ public class Torneo {
 	private String nombre;
 	private List<Equipo> equipos;
 	private List<List<Partida>> emparejamientos;
-	//private List<Partida> partidas; // Revisar
 	private List<Equipo> clasificados;
 	private Equipo ganador;
 	
 	public Torneo() {
 		super();
 		this.equipos = new ArrayList<Equipo>();
-		//this.partidas = new ArrayList<Partida>();
 		this.clasificados = new ArrayList<Equipo>();
 		this.emparejamientos = new ArrayList<List<Partida>>();
 	}
@@ -26,7 +24,6 @@ public class Torneo {
 		this.nombre = nombre;
 		this.equipos = equipos;
 		this.emparejamientos = emparejamientos;
-		//this.partidas = partidas;
 		this.ganador = ganador;
 	}
 
@@ -54,14 +51,6 @@ public class Torneo {
 		this.emparejamientos = emparejamientos;
 	}
 
-//	public List<Partida> getPartidas() {
-//		return partidas;
-//	}
-//
-//	public void setPartidas(List<Partida> partidas) {
-//		this.partidas = partidas;
-//	}
-
 	public Equipo getGanador() {
 		return ganador;
 	}
@@ -83,7 +72,6 @@ public class Torneo {
 		return "Torneo [nombre=" + nombre + ", equipos=" + equipos + ", emparejamientos=" + emparejamientos
 				 + ", ganador=" + ganador + "]";
 	}
-	
 	
 	
 }
