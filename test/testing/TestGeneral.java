@@ -1,6 +1,5 @@
 package testing;
 
-import es.empresa.torneo.control.GestionEquiposYJugadores;
 import es.empresa.torneo.control.GestionTorneos;
 import es.empresa.torneo.modelo.Equipo;
 import es.empresa.torneo.modelo.Jugador;
@@ -52,58 +51,57 @@ public class TestGeneral {
 		Jugador jugador12 = new Jugador();
 		jugador12.setNombre("Nuno");
 		
-		// Invocamos la clase de gestión
-		GestionEquiposYJugadores gestionEquipos = GestionEquiposYJugadores.getInstance();
-		
-		// Agregar jugadores al sistema
-		System.out.println(gestionEquipos.agregaJugador(jugador1));
-		System.out.println(gestionEquipos.agregaJugador(jugador2));
-		System.out.println(gestionEquipos.agregaJugador(jugador3));
-		System.out.println(gestionEquipos.agregaJugador(jugador4));
-		System.out.println(gestionEquipos.agregaJugador(jugador5));
-		System.out.println(gestionEquipos.agregaJugador(jugador6));
-		System.out.println(gestionEquipos.agregaJugador(jugador7));
-		System.out.println(gestionEquipos.agregaJugador(jugador8));
-		System.out.println(gestionEquipos.agregaJugador(jugador9));
-		System.out.println(gestionEquipos.agregaJugador(jugador10));
-		System.out.println(gestionEquipos.agregaJugador(jugador11));
-		System.out.println(gestionEquipos.agregaJugador(jugador12));
-
-		// Agregar equipos al sistema
-		System.out.println(gestionEquipos.agregarEquipo(inglaterra));
-		System.out.println(gestionEquipos.agregarEquipo(españa));
-		System.out.println(gestionEquipos.agregarEquipo(francia));
-		System.out.println(gestionEquipos.agregarEquipo(alemania));
-		System.out.println(gestionEquipos.agregarEquipo(italia));
-		System.out.println(gestionEquipos.agregarEquipo(portugal));
-		
-		// Agregar jugadores a los equipos
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador1, inglaterra));
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador2, inglaterra));
-
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador3, españa));
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador4, españa));
-
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador5, francia));
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador6, francia));
-
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador7, alemania));
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador8, alemania));
-
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador9, italia));
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador10, italia));
-
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador11, portugal));
-		System.out.println(gestionEquipos.agregaJugadorAEquipo(jugador12, portugal));	
-
-		
-		System.out.println(gestionEquipos.toString());
-		
-		System.out.println(gestionEquipos.getJugadores().get(0).getEquipo());
-		
-		
 		// Invocamos la clase de gestión de torneos
 		GestionTorneos gestionTorneos = GestionTorneos.getInstance();
+		
+	
+		// Agregar jugadores al sistema
+		System.out.println(gestionTorneos.agregaJugador(jugador1));
+		System.out.println(gestionTorneos.agregaJugador(jugador2));
+		System.out.println(gestionTorneos.agregaJugador(jugador3));
+		System.out.println(gestionTorneos.agregaJugador(jugador4));
+		System.out.println(gestionTorneos.agregaJugador(jugador5));
+		System.out.println(gestionTorneos.agregaJugador(jugador6));
+		System.out.println(gestionTorneos.agregaJugador(jugador7));
+		System.out.println(gestionTorneos.agregaJugador(jugador8));
+		System.out.println(gestionTorneos.agregaJugador(jugador9));
+		System.out.println(gestionTorneos.agregaJugador(jugador10));
+		System.out.println(gestionTorneos.agregaJugador(jugador11));
+		System.out.println(gestionTorneos.agregaJugador(jugador12));
+
+		// Agregar equipos al sistema
+		System.out.println(gestionTorneos.agregarEquipo(inglaterra));
+		System.out.println(gestionTorneos.agregarEquipo(españa));
+		System.out.println(gestionTorneos.agregarEquipo(francia));
+		System.out.println(gestionTorneos.agregarEquipo(alemania));
+		System.out.println(gestionTorneos.agregarEquipo(italia));
+		System.out.println(gestionTorneos.agregarEquipo(portugal));
+		
+		// Agregar jugadores a los equipos
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador1, inglaterra));
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador2, inglaterra));
+
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador3, españa));
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador4, españa));
+
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador5, francia));
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador6, francia));
+
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador7, alemania));
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador8, alemania));
+
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador9, italia));
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador10, italia));
+
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador11, portugal));
+		System.out.println(gestionTorneos.agregaJugadorAEquipo(jugador12, portugal));	
+
+		
+		System.out.println(gestionTorneos.toString());
+		
+		
+		
+
 		
 		Torneo eligaEuropa = new Torneo();
 		eligaEuropa.setNombre("E-Liga Europa");
