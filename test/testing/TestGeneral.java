@@ -53,7 +53,7 @@ public class TestGeneral {
 		jugador12.setNombre("Nuno");
 		
 		// Invocamos la clase de gestión
-		GestionEquiposYJugadores gestionEquipos = GestionEquiposYJugadores.of();
+		GestionEquiposYJugadores gestionEquipos = GestionEquiposYJugadores.getInstance();
 		
 		// Agregar jugadores al sistema
 		System.out.println(gestionEquipos.agregaJugador(jugador1));
@@ -103,7 +103,7 @@ public class TestGeneral {
 		
 		
 		// Invocamos la clase de gestión de torneos
-		GestionTorneos gestionTorneos = GestionTorneos.of();
+		GestionTorneos gestionTorneos = GestionTorneos.getInstance();
 		
 		Torneo eligaEuropa = new Torneo();
 		eligaEuropa.setNombre("E-Liga Europa");
