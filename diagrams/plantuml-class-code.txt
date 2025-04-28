@@ -1,0 +1,119 @@
+@startuml
+' Diagrama de Clases UML - Sistema de gestión de torneos para e-sports
+
+' Clases de Entidad
+
+class Jugador <<Entity>> {
+  -nombre: String
+  --
+  +setNombre(nombre: String): void
+  +getNombre(): String
+}
+
+class Equipo <<Entity>> {
+  -nombre: String
+  -jugadores: List<Jugador>
+  --
+  +setNombre(nombre: String): void
+  +getNombre(): String
+  +setJugadores(lista: List<Jugador>): void
+  +getJugadores: List<Jugador>
+  +agregarJugador(jugador: Jugador): boolean
+  +borrarJugador(jugador: Jugador): boolean
+}
+
+class Torneo <<Entity>> {
+  -nombre: String
+  -equipos: List<Equipo>
+  -emparejamientos: List<List<Partida>>
+  -clasificados: List<Equipo>
+  -ganador: Equipo
+  --
+  + getNombre(): String
+  + setNombre(nombre: String): void
+  + getEquipos(): List<Equipo>
+  + setEquipos(equipos: List<Equipo>): void
+  + getEmparejamientos(): List<List<Partida>>
+  + setEmparejamientos(emparejamientos: List<List<Partida>>): void
+  + getClasificados(): List<Equipo>
+  + setClasificados(clasificados: List<Equipo>): void
+  + getGanador(): Equipo
+  + setGanador(ganador: Equipo): void
+}
+
+class Partida <<Entity>> {
+  - equipos: List<Equipo>
+  - resultado: Map<Equipo, Integer>
+  - ganador: Equipo
+  --
+  + getEquipos(): List<Equipo>
+  + setEquipos(equipos: List<Equipo>): void
+  + getResultado(): Map<Equipo, Integer>
+  + setResultado(resultado: Map<Equipo, Integer>): void
+  + getGanador(): Equipo
+  + setGanador(ganador: Equipo): void
+  + toString(): String
+  + agregaEquipo(equipo: Equipo): boolean
+  + eliminaEquipo(equipo: Equipo): boolean
+  + ajustaResultado(nombreEquipo: String, puntos: Integer): boolean
+}
+
+
+' Clases de Control
+
+class GestionEquiposYJugadores <<Controller>> {
+  - instancia: GestionEquiposYJugadores
+  - equipos: List<Equipo>
+  - jugadores: List<Jugador>
+  --
+  + of(): GestionEquiposYJugadores
+  + getEquipos(): List<Equipo>
+  + setEquipos(equipos: List<Equipo>): void
+  + getJugadores(): List<Jugador>
+  + setJugadores(jugadores: List<Jugador>): void
+  + toString(): String
+  + agregaJugador(jugador: Jugador): boolean
+  + agregaJugadorAEquipo(jugador: Jugador, equipo: Equipo): boolean
+  + agregarEquipo(equipo: Equipo): boolean
+}
+
+class GestionPartidasYResultados <<Controller>> {
+  - instancia: GestionPartidasYResultados
+  --
+  + of(): GestionPartidasYResultados
+  + registrarResultadoPartida(torneo: Torneo, partida: Partida, ganador: Equipo): boolean
+  + actualizaClasificacionTorneo(torneo: Torneo): boolean
+}
+
+class GestionTorneos <<Controller>> {
+  - instancia: GestionTorneos
+  - torneos: List<Torneo>
+  --
+  + of(): GestionTorneos
+  + getTorneos(): List<Torneo>
+  + setTorneos(torneos: List<Torneo>): void
+  + crearUnTorneo(torneo: Torneo): boolean
+  + inscribirEquipoEnTorneo(equipo: Equipo, torneo: Torneo): boolean
+  + generaEmparejamientos(torneo: Torneo): boolean
+}
+
+' Relaciones
+GestionTorneos "1" o-- "*" Torneo : tiene
+GestionTorneos "1" o-- "*" Equipo : usa
+GestionTorneos "1" o-- "*" Partida : usa
+
+GestionPartidasYResultados "1" o-- "*" Torneo : usa
+GestionPartidasYResultados "1" o-- "*" Partida : usa
+GestionPartidasYResultados "1" o-- "1" GestionTorneos : usa
+
+GestionEquiposYJugadores "1" o-- "*" Equipo : usa
+GestionEquiposYJugadores "1" o-- "*" Jugador : usa
+
+Equipo "1" o-- "*" Jugador : tiene
+
+Torneo "1" o-- "*" Equipo : tiene
+Torneo "1" o-- "*" Partida : tiene
+
+Partida "2" o-- "*" Equipo : juega
+Partida "1" o-- "1" Equipo : tiene ganador
+@enduml
