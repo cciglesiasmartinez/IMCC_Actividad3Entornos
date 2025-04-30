@@ -214,4 +214,51 @@ public class GestionTorneos {
 	    }
 	}
 	
+	/**
+	 * Método para actualizar la clasificación de torneos
+	 * 
+	 * @param torneo El torneo sobre el cual se desea ejecutar 
+	 * @return {@code true} si se actualiza correctamente y {@code false} si el torneo no se encuentra en la lista
+	 */
+	public boolean actualizaClasificacionTorneo(Torneo torneo) {
+		for (Torneo t: this.torneos) {
+			if (t.getNombre().equals(torneo.getNombre())) {
+				// Es necesario comprobar que todas las partidas tienen un ganador antes de esto :)
+				// Borrar la lista de clasificados actual
+				t.getClasificados().clear();
+				// Recorrer las partidas del último emparejamiento
+				for (Partida p: t.getEmparejamientos().get(t.getEmparejamientos().size()-1)) {
+					t.getClasificados().add(p.getGanador());
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Este método registra el resultado de una partida; es decir, registra uno de los equipos como ganador de la misma.
+	 * 
+	 * @param torneo El torneo al que pertence la partida
+	 * @param partida La partida que queremos actualizar
+	 * @param ganador El ganador de la partida
+	 * @return {@code true} si se ha actualizado correctamente el resultado, y {@code false} si es que no se ha encontrado la partida o el torneo 
+	 */
+	public boolean registrarResultadoPartida(Torneo torneo, Partida partida, Equipo ganador) {
+		for (Torneo t: this.torneos) {
+			if (t.getNombre().equals(torneo.getNombre())) {
+				// Busca la partida en la última ronda de emparejamientos. Refactorizar.
+				for (Partida p: t.getEmparejamientos().get(t.getEmparejamientos().size()-1)) {
+					// Comprueba si la partida es la que buscamos
+					if ((p.getEquipos().get(0).getNombre().equals(partida.getEquipos().get(0).getNombre())) 
+							&& (p.getEquipos().get(1).getNombre().equals(partida.getEquipos().get(1).getNombre()))) {
+						p.setGanador(ganador);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
 }
