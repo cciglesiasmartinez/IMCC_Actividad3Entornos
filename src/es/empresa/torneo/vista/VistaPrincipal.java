@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import es.empresa.torneo.control.GestionTorneos;
 
-public class Menu {
+public class VistaPrincipal {
 	
 	public static Scanner entradaTeclado = new Scanner(System.in);
 	public static GestionTorneos gestionTorneos = GestionTorneos.getInstance();
