@@ -37,11 +37,11 @@ public class GestionTorneos {
 		this.jugadores = new ArrayList<Jugador>();
 	}
 	
-    /**
-     * Obtiene la instancia única de {@code GestionTorneos}.
-     * 
-     * @return instancia única de {@code GestionTorneos}
-     */
+	/**
+	 * Obtiene la instancia única de {@code GestionTorneos}.
+	 * 
+	 * @return instancia única de {@code GestionTorneos}
+	 */
 	public static GestionTorneos getInstance() {
 		if (instancia == null ) {
 			instancia = new GestionTorneos();
@@ -49,20 +49,20 @@ public class GestionTorneos {
 		return instancia;
 	}
 
-    /**
-     * Obtiene la lista de torneos gestionados.
-     * 
-     * @return lista de torneos
-     */
+	/**
+	 * Obtiene la lista de torneos gestionados.
+	 * 
+	 * @return lista de torneos
+	 */
 	public List<Torneo> getTorneos() {
 		return torneos;
 	}
 
-    /**
-     * Establece la lista de torneos gestionados.
-     * 
-     * @param torneos nueva lista de torneos
-     */
+	/**
+	 * Establece la lista de torneos gestionados.
+	 * 
+	 * @param torneos nueva lista de torneos
+	 */
 	public void setTorneos(List<Torneo> torneos) {
 		this.torneos = torneos;
 	}
@@ -143,24 +143,24 @@ public class GestionTorneos {
 		return this.equipos.add(equipo);
 	}
 
-    /**
-     * Crea un nuevo torneo si no existe previamente.
-     * 
-     * @param torneo torneo a crear
-     * @return {@code true} si el torneo fue creado, {@code false} si ya existía
-     */
+	/**
+	 * Crea un nuevo torneo si no existe previamente.
+	 * 
+	 * @param torneo torneo a crear
+	 * @return {@code true} si el torneo fue creado, {@code false} si ya existía
+	 */
 	public boolean crearUnTorneo(Torneo torneo) {
 		if (this.torneos.contains(torneo)) return false;
 		return this.torneos.add(torneo);
 	}
 	
-    /**
-     * Inscribe un equipo en un torneo existente, siempre que el equipo no esté ya inscrito.
-     * 
-     * @param equipo equipo a inscribir
-     * @param torneo torneo donde inscribir el equipo
-     * @return {@code true} si el equipo fue inscrito, {@code false} si el torneo no existe o el equipo ya estaba inscrito
-     */
+	/**
+	 * Inscribe un equipo en un torneo existente, siempre que el equipo no esté ya inscrito.
+	 * 
+	 * @param equipo equipo a inscribir
+	 * @param torneo torneo donde inscribir el equipo
+	 * @return {@code true} si el equipo fue inscrito, {@code false} si el torneo no existe o el equipo ya estaba inscrito
+	 */
 	public boolean inscribirEquipoEnTorneo(Equipo equipo, Torneo torneo) {
 		for (Torneo t: this.torneos) {
 			if (t.getNombre().equals(torneo.getNombre()) && !t.getEquipos().contains(equipo) ) {
@@ -170,14 +170,14 @@ public class GestionTorneos {
 		return false;
 	}
 	
-    /**
-     * Genera los emparejamientos de partidas para un torneo determinado.
-     * 
-     *Empareja los equipos inscritos si es la primera ronda, o los clasificados si se trata de rondas posteriores.
-     * 
-     * @param torneo torneo para el que generar los emparejamientos
-     * @return {@code true} si se generaron emparejamientos correctamente, {@code false} en caso contrario
-     */
+	/**
+	 * Genera los emparejamientos de partidas para un torneo determinado.
+	 * 
+	 *Empareja los equipos inscritos si es la primera ronda, o los clasificados si se trata de rondas posteriores.
+	 * 
+	 * @param torneo torneo para el que generar los emparejamientos
+	 * @return {@code true} si se generaron emparejamientos correctamente, {@code false} en caso contrario
+	 */
 	public boolean generaEmparejamientos(Torneo torneo) {
 		for (Torneo t: this.torneos) {
 			// Comprobamos si el torneo existe previamente y si el número de equipos es par
@@ -198,13 +198,13 @@ public class GestionTorneos {
 		return false;
 	}
 	
-    /**
-     * Método auxiliar que empareja equipos en partidas de dos en dos.
-     * 
-     * @param t torneo en el que añadir las partidas
-     * @param listaEquipos lista de equipos a emparejar
-     * @param emparejamientos lista donde se añadirán las nuevas partidas generadas
-     */
+	/**
+	 * Método auxiliar que empareja equipos en partidas de dos en dos.
+	 * 
+	 * @param t torneo en el que añadir las partidas
+	 * @param listaEquipos lista de equipos a emparejar
+	 * @param emparejamientos lista donde se añadirán las nuevas partidas generadas
+	 */
 	public void emparejaListasEnTorneo(Torneo t, List<Equipo> listaEquipos, List<Partida> emparejamientos) {
 	    for (int i = 0; i < listaEquipos.size()-1; i += 2) {
 	        Partida partida = new Partida();
