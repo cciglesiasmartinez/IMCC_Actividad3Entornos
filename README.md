@@ -42,6 +42,7 @@ README.md
 ## Justificación del diseño
 He decidido emplear la estructura actual mayormente por su sencillez, para proporcionar un prototipo sencillo capaz de demostrar la funcionalidad mínima del proyecto. Por este hecho he decidido emplear únicamente un almacenamiento en memoria a base de ArrayLists en vez de aplicar un patrón DAO con acceso a base de datos.
 
-Además, he decidido emplear relaciones de agregación entre casi todas las clases del modelo para evitar en todo lo posible el acoplamiento, de modo que coexistan jugadores y equipos de manera independiente, pudiendo eliminar equipos o jugadores sin afectarse entre ellos. La única excepción a esto son las partidas, que son dependientes del torneo.
+Además, he decidido emplear relaciones de agregación entre casi todas las clases del modelo para evitar en todo lo posible el acoplamiento, de modo que por ejemplo coexistan jugadores y equipos de manera independiente, pudiendo eliminar equipos o jugadores sin afectarse entre ellos. La única excepción a esto son las partidas, que son dependientes del torneo.
 
 ## Conclusiones
+Si bien es cierto que los diagramas pueden resultar muy útiles a la hora de planificar el desarrollo de las aplicaciones, he observado que a menudo, una vez comenzada la implementación, será necesario establecer cambios sobre las estructuras que han sido definidas previamente en dichos diagramas, lo cual convertirá el proceso de elaboración de los mismos en uno de iteración con la implementación actual del código.
