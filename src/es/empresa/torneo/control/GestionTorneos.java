@@ -173,7 +173,7 @@ public class GestionTorneos {
 	/**
 	 * Genera los emparejamientos de partidas para un torneo determinado.
 	 * 
-	 *Empareja los equipos inscritos si es la primera ronda, o los clasificados si se trata de rondas posteriores.
+	 * Empareja los equipos inscritos si es la primera ronda, o los clasificados si se trata de rondas posteriores.
 	 * 
 	 * @param torneo torneo para el que generar los emparejamientos
 	 * @return {@code true} si se generaron emparejamientos correctamente, {@code false} en caso contrario
