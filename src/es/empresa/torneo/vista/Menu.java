@@ -31,7 +31,7 @@ public class Menu {
 	}
 	
 	public static void mostrarSubmenuTorneos() {
-		System.out.println("Submenú de torneos\n");
+		System.out.println("Submenú de torneos\n ");
 		mostrarMenu();
 	}
 }
